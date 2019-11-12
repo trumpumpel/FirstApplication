@@ -1,5 +1,27 @@
 <html>
+    <head>
+        <script type="text/javascript">
+            fetch('https://api.airtable.com/v0/appe6j3AUcukXUl1Q/Teams?maxRecords=3&view=Grid%20view', { 
+                method: 'get', 
+                headers: new Headers({
+                    'Authorization': 'Bearer keyarCDllbc7zjNNb'
+                })
+            }).then(response => {
+                response.json().then(data => {
+                    console.log(data);
+                })                
+            });
+        </script>
+    </head>
     <body>
         Привет!!!!
+        <table>
+            <tr>
+                <th>Команда</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
     </body>
 </html>
