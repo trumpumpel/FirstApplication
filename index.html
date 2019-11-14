@@ -11,11 +11,19 @@
                     <th>Команда</th>
                 </tr>
                 <tr v-for="t in teams">
-                    <td><a href="#">{{t.fields.Name}}</a> </td>
+                    <td><a v-on:click="showPlayers" href="#">{{t.fields.Name}}</a> </td>
                 </tr>
             </table>  
-            
-            <div>test</div>
+
+            <table>
+                <tr>
+                    <th>Игрок</th>
+                    <th>Возраст</th>
+                </tr>
+                <tr>
+
+                </tr>
+            </table>
         </div>
 
 
@@ -27,7 +35,20 @@
                 el: '#app',
                 data: {
                     message: 'Hello Vue!',
-                    teams: []
+                    teams: [],
+                    players: []
+                },
+                // определяйте методы в объекте `methods`
+                methods: {
+                    showPlayers: function (event) {
+                        event.preventDefault();
+                        // `this` внутри методов указывает на экземпляр Vue
+                        alert('Привет, ' + this.message + '!')
+                        // `event` — нативное событие DOM
+                        if (event) {
+                            //alert(event.target.tagName)
+                        }
+                    }
                 },
                 mounted() {
                     let vm = this;
