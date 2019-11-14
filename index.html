@@ -18,6 +18,9 @@
             <div>
                 {{ symbolName }}
             </div>
+            <div>
+                {{ logo }}
+            </div>
         </div>
 
 
@@ -30,6 +33,7 @@
                 data: {
                     cityName: 'Привет Шура!',
                     symbolName: 'Привет ШурА!',
+                    logo: null,
                     teams: []
                 },
                 // определяйте методы в объекте `methods`
@@ -38,6 +42,7 @@
                         console.log(team)
                         this.cityName = team.fields.City;
                         this.symbolName = team.fields.Symbol;
+                        this.logo = team.fields.Logo[0].url;
                         // А какая команда была нажата то!?
 
                     }
