@@ -3,27 +3,21 @@
     </head>
     <body>
         <div id="app">
-            {{ message }}
-
-            Привет!!!!
             <table>
                 <tr>
                     <th>Команда</th>
                 </tr>
                 <tr v-for="t in teams">
-                    <td><a v-on:click="showPlayers" href="#">{{t.fields.Name}}</a> </td>
-                </tr>
-            </table>  
-
-            <table>
-                <tr>
-                    <th>Игрок</th>
-                    <th>Возраст</th>
-                </tr>
-                <tr>
-
+                    <td><a v-on:click="showPlayers(t)" href="#">{{t.fields.Name}}</a> </td>                    
                 </tr>
             </table>
+
+            <div>
+                {{ cityName }}
+            </div>
+            <div>
+                {{ symbolName }}
+            </div>
         </div>
 
 
@@ -34,20 +28,18 @@
             var vueApp = new Vue({
                 el: '#app',
                 data: {
-                    message: 'Hello Vue!',
-                    teams: [],
-                    players: []
+                    cityName: 'Привет Шура!',
+                    symbolName: 'Привет ШурА!',
+                    teams: []
                 },
                 // определяйте методы в объекте `methods`
                 methods: {
-                    showPlayers: function (event) {
-                        event.preventDefault();
-                        // `this` внутри методов указывает на экземпляр Vue
-                        alert('Привет, ' + this.message + '!')
-                        // `event` — нативное событие DOM
-                        if (event) {
-                            //alert(event.target.tagName)
-                        }
+                    showPlayers: function (team) {
+                        console.log(team)
+                        this.cityName = team.fields.City;
+                        this.symbolName = team.fields.Symbol;
+                        // А какая команда была нажата то!?
+
                     }
                 },
                 mounted() {
