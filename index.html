@@ -8,7 +8,10 @@
                     <th>Команда</th>
                 </tr>
                 <tr v-for="t in teams">
-                    <td><a v-on:click="showPlayers(t)" href="#">{{t.fields.Name}}</a> </td>                    
+                    <td><a v-on:click="showPlayers(t)" href="#">{{t.fields.Name}}</a> </td>   
+                    <div>
+                            <a v-bind:href="link">{{logo}}</a>
+                    </div>                 
                 </tr>
             </table>
 
@@ -22,12 +25,13 @@
                 {{ logo }}
             </div>
             <div>
-                <img src="https://dl.airtable.com/.attachmentThumbnails/eb86e2bf21a7c549eda9502619a01460/48fc36f4">
+                <img src="https://img2.goodfon.ru/original/2560x1600/d/d9/khl-hokkey-sport-emblema-khl.jpg">
                 <img :src="path">
             </div>
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue"></script>
         <script type="text/javascript">
             // Запускаем
             // Vue
@@ -36,7 +40,7 @@
                 data: {
                     cityName: 'Привет Шура!',
                     symbolName: 'Привет ШурА!',
-                    logo: null,
+                    logo: '', link:'https://api.airtable.com/v0/appe6j3AUcukXUl1Q/Teams?maxRecords=3&view=Grid%20view',
                     teams: []
                 },
                 // определяйте методы в объекте `methods`
