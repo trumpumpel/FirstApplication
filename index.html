@@ -1,9 +1,10 @@
 <html>
     <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
         <div id="app">
-            <table>
+            <table class="table">
                 <tr>
                     <th>Команда</th>
                 </tr>
@@ -18,8 +19,8 @@
             <div>
                 {{ symbolName }}
             </div>
-            <div>
-                <img :src="logo" />
+            <div v-if="logo">
+                <img style="width: 300px" :src="logo" />
             </div>
         </div>
         
@@ -32,7 +33,7 @@
                 data: {
                     cityName: 'Привет Шура!',
                     symbolName: 'Привет ШурА!',
-                    logo: '',
+                    logo: null,
                     teams: []
                 },
                 // определяйте методы в объекте `methods`
@@ -41,12 +42,12 @@
                         console.log(team)
                         this.cityName = team.fields.City;
                         this.symbolName = team.fields.Symbol;
-                        this.logo = team.fields.Logo[0].thumbnails.small.url;
+                        this.logo = team.fields.Logo[0].thumbnails.large.url;
                     }
                 },
                 mounted() {
                     let vm = this;
-                    fetch('https://api.airtable.com/v0/appe6j3AUcukXUl1Q/Teams?maxRecords=3&view=Grid%20view', { 
+                    fetch('https://api.airtable.com/v0/appe6j3AUcukXUl1Q/Teams?maxRecords=10&view=Grid%20view', { 
                         method: 'get', 
                         headers: new Headers({
                             'Authorization': 'Bearer keyarCDllbc7zjNNb'
