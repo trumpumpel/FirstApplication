@@ -8,10 +8,7 @@
                     <th>Команда</th>
                 </tr>
                 <tr v-for="t in teams">
-                    <td><a v-on:click="showPlayers(t)" href="#">{{t.fields.Name}}</a> </td>   
-                    <div>
-                            <a v-bind:href="link">{{logo}}</a>
-                    </div>                 
+                    <td><a v-on:click="showPlayers(t)" href="#">{{t.fields.Name}}</a> </td> 
                 </tr>
             </table>
 
@@ -22,16 +19,11 @@
                 {{ symbolName }}
             </div>
             <div>
-                {{ logo }}
-            </div>
-            <div>
-                <img src="https://img2.goodfon.ru/original/2560x1600/d/d9/khl-hokkey-sport-emblema-khl.jpg">
-                <img :src="path">
+                <img :src="logo" />
             </div>
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://unpkg.com/vue"></script>
         <script type="text/javascript">
             // Запускаем
             // Vue
@@ -40,7 +32,7 @@
                 data: {
                     cityName: 'Привет Шура!',
                     symbolName: 'Привет ШурА!',
-                    logo: '', link:'https://api.airtable.com/v0/appe6j3AUcukXUl1Q/Teams?maxRecords=3&view=Grid%20view',
+                    logo: '',
                     teams: []
                 },
                 // определяйте методы в объекте `methods`
@@ -49,9 +41,7 @@
                         console.log(team)
                         this.cityName = team.fields.City;
                         this.symbolName = team.fields.Symbol;
-                        this.logo = team.fields.Logo[0].url;
-                        // А какая команда была нажата то!?
-
+                        this.logo = team.fields.Logo[0].thumbnails.small.url;
                     }
                 },
                 mounted() {
