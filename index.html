@@ -4,7 +4,17 @@
     </head>
     <body>
         <div id="app">
-            <table class="table">
+            <table class="container">
+                    <div class="row">
+                            <div class="col">
+                                
+                            </div>
+                            <div class="col">
+                                    {{ cityName }}
+                            </div>
+                            <div class="col">
+                                    {{ playersName }}
+                            </div>
                 <tr>
                     <th>Команда</th>
                 </tr>
@@ -33,6 +43,7 @@
                 data: {
                     cityName: 'Привет Шура!',
                     symbolName: 'Привет ШурА!',
+                    playersName: 'Игроки',
                     logo: null,
                     teams: []
                 },
@@ -42,12 +53,13 @@
                         console.log(team)
                         this.cityName = team.fields.City;
                         this.symbolName = team.fields.Symbol;
+                        this.playersName = team.fields.Players;
                         this.logo = team.fields.Logo[0].thumbnails.large.url;
                     }
                 },
                 mounted() {
                     let vm = this;
-                    fetch('https://api.airtable.com/v0/appe6j3AUcukXUl1Q/Teams?maxRecords=10&view=Grid%20view', { 
+                    fetch('https://api.airtable.com/v0/appe6j3AUcukXUl1Q/Teams?maxRecords=22&view=Grid%20view', { 
                         method: 'get', 
                         headers: new Headers({
                             'Authorization': 'Bearer keyarCDllbc7zjNNb'
