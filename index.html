@@ -7,7 +7,8 @@
             <table class="container">
                     <div class="row">
                             <div class="col">
-                                
+                                <div v-if="logo">
+                                    <img style="width: 300px" :src="logo" />
                             </div>
                             <div class="col">
                                     {{ cityName }}
@@ -41,9 +42,9 @@
             var vueApp = new Vue({
                 el: '#app',
                 data: {
-                    cityName: 'Привет Шура!',
-                    symbolName: 'Привет ШурА!',
-                    playersName: 'Игроки',
+                    cityName: '',
+                    symbolName: '',
+                    playersName: '',
                     logo: null,
                     teams: []
                 },
